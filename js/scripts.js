@@ -1,35 +1,46 @@
 $(document).ready (function(){
 
   $("input").click(function(sentence) {
-    var answerPrompt = prompt("Write you sentence here!");
+    var userSentence = prompt("Write you sentence here!");
 
-    alert("Your sentence to be encrypted is " + '"' + answerPrompt + '"');
+    // alert("Your sentence to be encrypted is " + '"' + userSentence + '"');
 
-    // var replacer = /(^.|\S^.)(.*)(.$|.\.$)/;
-    //
-    // var splitUser = userSentence.match(replacer);
-    //
-    // console.log(splitUser);
+    console.log(userSentence);
 
     function replacer(match, p1, p2, p3) {
+      // p1 is first character, p2 all middle characters, and p3 last characters//
       var firstLast = [p1, "", p3].join("");
       return firstLast.toUpperCase();
     };
-    var firstLastUpper = answerPrompt.match(/(^.|\S^.)(.*)(.$|.\.$)/);
 
-		// function reverseAnswer(string){
-      // var firstLastUpper = answerPrompt.replace(/(^.|\S^.)(.*)(.$|.\.$)/, replacer);
-    	// var switchFirstLastUpper = firstLastUpper.replace(/(^.|^.\S)(.$|.\.$)/, '$2$1');
-    	// var divideAnswer = (answerPrompt.length / 2);
-    	// var replace = answerPrompt.charAt(divideAnswer);
-    	// var concate = (replace + answerPrompt + switchFirstLastUpper);
-      // var split = concate.split("");
-      // var reverse = split.reverse();
-      // var join = reverse.join("");
-    //   return firstLastUpper;
-    // };
+    var firstLastUpper = userSentence.replace(/(^.|^.\S)(.*)(.$|.\.$)/, replacer);
 
     console.log(firstLastUpper);
+
+    var firstLastSwitch = firstLastUpper.replace(/(^.|^.\S)(.$|.\.$)/, '$2$1');
+
+    console.log(firstLastSwitch);
+
+    var switchAdd = userSentence + firstLastSwitch;
+
+    console.log(switchAdd);
+
+    var userSentenceDivide = userSentence.charAt(Math.floor(userSentence.length / 2));
+
+    console.log(userSentenceDivide);
+
+    var encryptUser = userSentenceDivide + switchAdd;
+
+    console.log(encryptUser);
+
+    function reverseEncrypt() {
+      var splitEncrypt = encryptUser.split("");
+      var reverseSplit = splitEncrypt.reverse();
+      var joinEncrypt = reverseSplit.join("");
+      return joinEncrypt;
+    };
+
+    console.log(reverseEncrypt(encryptUser));
 
   });
 

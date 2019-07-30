@@ -43,3 +43,7 @@ img {
 .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(81,17,43,0.5);
 }
+
+#userSentence {
+  display: none;
+}

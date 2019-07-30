@@ -1,6 +1,6 @@
 $(document).ready (function(){
 
-  $("input").click(function(sentence) {
+  $("#sentence").click(function(sentence) {
     var userSentence = prompt("Write you sentence here!");
 
     // alert("Your sentence to be encrypted is " + '"' + userSentence + '"');
